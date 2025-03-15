@@ -1,0 +1,71 @@
+{
+  "name": "{{projectName}}",
+  "version": "{{projectVersion}}",
+  "repository": "https://github.tools.sap/sli-smartLabs/sl_care_for_life.git",
+  "author": "I516384 <rahul.agarwal06@sap.com>",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "build": "rimraf build && tsc && tsc-alias",
+    "start": "cross-env NODE_ENV=production node dist/src/index.js",
+    {{#if xsuaa}}
+    "dev": "cross-env NODE_ENV=development nodemon -e ts,js --exec ts-node -r tsconfig-paths/register -r dotenv/config ./src/index.ts",
+    {{else}}
+    "dev": "cross-env NODE_ENV=development nodemon -e ts,js --exec ts-node ./src/index.ts",
+    {{/if}}
+    "test": "jest -i --colors --verbose --detectOpenHandles",
+    "test:watch": "jest -i --watchAll",
+    "coverage": "jest -i --coverage",
+    "coverage:coveralls": "jest -i --coverage --coverageReporters=text-lcov | coveralls",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "prettier:fix": "prettier --write **/*.{ts,tsx}"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    {{#if xsuaa}}
+    "@sap/xsenv": "^3.4.0",
+    "@sap/xssec": "^3.2.14",
+    "passport": "^0.6.0",
+    "@types/sap__xsenv": "^3.3.0",
+    "@types/passport": "^1.0.11",
+    "tsconfig-paths": "^4.1.1",
+    {{else}}
+    {{/if}}
+    "@types/compression": "^1.7.2",
+    "@types/cors": "^2.8.13",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.11.9",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.0",
+    "express": "^4.18.2",
+    "http-status": "^1.5.3",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "coveralls": "^3.0.7",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "faker": "^5.1.0",
+    "jest": "^26.0.1",
+    "lint-staged": "^11.0.0",
+    "tsc-alias": "^1.8.6",
+    "nodemon": "^2.0.0",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    {{#if xsuaa}}
+    "dotenv": "^16.0.3",
+    {{else}}
+    {{/if}}
+    "supertest": "^6.0.1"
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "xsappname": "{{projectName}}",
+    "tenant-mode": "dedicated",
+    "scopes": [
+        {
+            "name": "uaa.user",
+            "description": "uaa.user"
+        }
+    ],
+    "attributes": []
+}

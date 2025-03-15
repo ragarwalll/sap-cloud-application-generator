@@ -1,0 +1,15 @@
+name: Build Project
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches:
+            - main
+
+    workflow_dispatch:
+
+jobs:
+    build:
+        uses: ragarwalll/deployer-workflow/.github/workflows/build-workflow.yml@main
+        with:
+            node-version: 22

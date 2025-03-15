@@ -1,0 +1,84 @@
+{
+    "name": "@ragarwal06/sap-cloud-application-generator",
+    "version": "1.0.0",
+    "description": "Boilterplate API for creating SAP full stack applications",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ragarwalll/sap-cloud-application-generator.git"
+    },
+    "keywords": [
+        "boilterplate",
+        "create-sap-app",
+        "create-sap-cloud-application",
+        "ui5",
+        "spring-boot",
+        "nodejs",
+        "reactjs",
+        "cf"
+    ],
+    "type": "module",
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
+    "exports": {
+        ".": {
+            "require": "./dist/cjs/index.js",
+            "default": "./dist/esm/index.js"
+        }
+    },
+    "typings": "./dist/index.d.ts",
+    "types": "./dist/index.d.ts",
+    "private": false,
+    "files": [
+        "dist"
+    ],
+    "engines": {
+        "node": ">=14.19"
+    },
+    "scripts": {
+        "typecheck": "tsc",
+        "build": "npm run clean && rollup --config ./rollup.config.js",
+        "clean": "rimraf dist .turbo",
+        "lint": "eslint \"src/**/*.{ts,tsx}\" --report-unused-disable-directives",
+        "lint:fix": "npm run lint -- --fix",
+        "format": "prettier --write \"src/**/*.{cjs,mjs,ts,tsx,md,json}\"",
+        "format:check": "prettier --check \"src/**/*.{cjs,mjs,ts,tsx,md,json}\"",
+        "beta": "npm run build && npm publish --tag beta --access public",
+        "release": "npm run build && npm publish --access public"
+    },
+    "devDependencies": {
+        "@ragarwal06/sap-cloud-application-generator-types": "^0.1.0",
+        "@rollup/plugin-alias": "^5.1.1",
+        "@rollup/plugin-json": "^6.1.0",
+        "@rollup/plugin-typescript": "^12.1.2",
+        "eslint": "^9.22.0",
+        "prettier": "^3.5.3",
+        "rimraf": "^6.0.1",
+        "rollup": "^4.35.0",
+        "rollup-plugin-copy": "^3.5.0",
+        "rollup-plugin-dts": "^6.1.1",
+        "typescript": "^5.8.2"
+    },
+    "dependencies": {
+        "@types/async": "^3.2.24",
+        "@types/fs-extra": "^11.0.4",
+        "@types/js-yaml": "^4.0.9",
+        "@types/node": "^22.13.10",
+        "@typescript-eslint/eslint-plugin": "^8.26.1",
+        "@typescript-eslint/parser": "^8.26.1",
+        "async": "^3.2.6",
+        "eslint-config-prettier": "^10.1.1",
+        "eslint-config-turbo": "^2.4.4",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-isaacscript": "^4.0.0",
+        "eslint-plugin-prettier": "^5.2.3",
+        "execa": "^9.5.2",
+        "fs-extra": "^11.3.0",
+        "handlebars": "^4.7.8",
+        "js-yaml": "^4.1.0",
+        "metalsmith": "^2.6.3"
+    },
+    "peerDependencies": {
+        "@ragarwal06/sap-cloud-application-generator-types": "^0.1.0"
+    }
+}

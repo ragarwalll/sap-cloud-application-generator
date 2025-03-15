@@ -1,0 +1,7 @@
+Flask
+{{#if xsuaa}}
+cfenv
+sap-xssec
+python-dotenv
+{{else}}
+{{/if}}

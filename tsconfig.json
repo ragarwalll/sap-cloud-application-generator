@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "moduleResolution": "NodeNext",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "checkJs": true
+    },
+    "include": ["src"],
+    "exclude": ["templates"]
+}

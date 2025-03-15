@@ -1,0 +1,9 @@
+const rolesMapping = {
+    admin: ['Admin'],
+    user: ['User'],
+};
+
+const roles = Object.keys(rolesMapping);
+const roleMap = new Map(Object.entries(rolesMapping));
+
+export { roles, roleMap };

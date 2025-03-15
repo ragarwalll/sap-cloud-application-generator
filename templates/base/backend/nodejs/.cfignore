@@ -1,0 +1,12 @@
+.env
+.editorconfig
+.eslintignore
+.eslintrc.json
+.gitattributes
+.gitignore
+.lintstagedrc.json
+.prettierignore
+.prettierrc.json
+jest.config.ts
+node_modules
+src

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "baseUrl": "."
+  },
+  {{#if xsuaa}}
+  "ts-node": {
+    "files": true
+  },
+  "files": [
+    "src/types/sap__xssec.d.ts",
+  ],
+  {{else}}
+  {{/if}}
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

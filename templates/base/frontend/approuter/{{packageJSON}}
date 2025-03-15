@@ -1,0 +1,11 @@
+{
+    "name": "{{projectName}}",
+    "version": "{{projectVersion}}",
+    "description": "Node.js based application router service",
+    "dependencies": {
+        "@sap/approuter": "^14.1.1"
+    },
+    "scripts": {
+        "start": "node node_modules/@sap/approuter/approuter.js"
+    }
+}

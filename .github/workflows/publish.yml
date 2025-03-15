@@ -1,0 +1,22 @@
+name: Publish to Registry
+on:
+    release:
+        types: [created]
+
+jobs:
+    build:
+        uses: ragarwalll/deployer-workflow/.github/workflows/build-workflow.yml@main
+        with:
+            node-version: 22
+
+    publish-npmjs:
+        needs: build
+        permissions:
+            packages: write
+            contents: read
+        uses: ragarwalll/deployer-workflow/.github/workflows/npm-publish-workflow.yml@main
+        with:
+            npmrc: registry/.npmrc.npmjs
+            node-version: 22
+        secrets:
+            token: ${{secrets.NPM_TOKEN}}

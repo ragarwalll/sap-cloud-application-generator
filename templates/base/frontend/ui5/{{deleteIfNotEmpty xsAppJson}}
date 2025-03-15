@@ -1,0 +1,26 @@
+{
+    {{#if xsuaa}}
+    "authenticationMethod": "route",
+    {{else}}
+    "authenticationMethod": "none",
+    {{/if}}
+    "routes": [
+        {{#each destinations}}
+        {
+            "source": "^/{{packageName}}Api/(.*)$",
+            "target": "/$1",
+            "destination": "{{packageName}}-destination",
+            "authenticationType": "{{authenticationType}}"
+        },
+        {{/each}}
+        {
+            "source": "^/(.*)$",
+            "localDir": "./webapp",
+            {{#if xsuaa}}
+            "authenticationType": "xsuaa"
+            {{else}}
+            "authenticationType": "none"
+            {{/if}}
+        }
+    ]
+}
