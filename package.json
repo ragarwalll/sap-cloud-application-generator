@@ -1,6 +1,6 @@
 {
     "name": "@ragarwal06/sap-cloud-application-generator",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Boilterplate API for creating SAP full stack applications",
     "license": "ISC",
     "repository": {
@@ -24,7 +24,7 @@
         ".": {
             "types": "./dist/index.d.ts",
             "require": "./dist/cjs/index.js",
-            "default": "./dist/esm/index.js"
+            "import": "./dist/esm/index.js"
         }
     },
     "typings": "./dist/index.d.ts",
