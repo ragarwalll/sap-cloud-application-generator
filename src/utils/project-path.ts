@@ -24,23 +24,28 @@ export const generateProjectNameAndPath = (pathWithName: string) => {
 };
 
 export const getPackageRoot = () => {
-    let currentModulePath;
-    if (typeof __dirname !== 'undefined') {
-        // CommonJS (CJS) environment
-        currentModulePath = __dirname;
-    } else if (
-        typeof import.meta !== 'undefined' &&
-        typeof import.meta.url !== 'undefined'
-    ) {
-        // ECMAScript modules (ESM) environment
-        currentModulePath = path.join(
-            path.dirname(fileURLToPath(import.meta.url)),
-            '../',
-        );
-    } else {
-        throw new Error('Unsupported module system');
+    try {
+        // ESM-safe
+        // @ts-expect-error import.meta is not defined in CJS
+        const isESM = typeof import.meta !== 'undefined';
+
+        // @ts-expect-error import.meta is not defined in CJS
+        if (isESM && import.meta.url) {
+            return path.resolve(
+                // @ts-expect-error import.meta is not defined in CJS
+                path.dirname(fileURLToPath(import.meta.url)),
+                '../',
+            );
+        }
+    } catch {
+        // Fallback for CJS
+        if (typeof __dirname !== 'undefined') {
+            return path.resolve(__dirname, '../');
+        }
     }
-    return currentModulePath;
+
+    // Final fallback
+    return process.cwd();
 };
 
 export const PACKAGE_ROOT = getPackageRoot();
