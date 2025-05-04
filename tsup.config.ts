@@ -1,6 +1,10 @@
 import path from "path";
 import { defineConfig } from "tsup";
 import alias from "esbuild-plugin-alias";
+import pkg from "./package.json";
+
+// Collect all your runtime deps as externals automatically
+const externalDeps = Object.keys(pkg.dependencies || {});
 
 export default defineConfig({
   entry: ["src/index.ts"],
@@ -14,6 +18,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src")
     })
   ],
-  // if you have lots of small files, you might disable splitting:
-  // splitting: false,
+  external: [
+    ...externalDeps,
+  ],
 });
