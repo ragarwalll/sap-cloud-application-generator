@@ -26,13 +26,10 @@ export const generateProjectNameAndPath = (pathWithName: string) => {
 export const getPackageRoot = () => {
     try {
         // ESM-safe
-        // @ts-expect-error import.meta is not defined in CJS
         const isESM = typeof import.meta !== 'undefined';
 
-        // @ts-expect-error import.meta is not defined in CJS
         if (isESM && import.meta.url) {
             return path.resolve(
-                // @ts-expect-error import.meta is not defined in CJS
                 path.dirname(fileURLToPath(import.meta.url)),
                 '../',
             );
