@@ -1,4 +1,4 @@
-# SAP Cloud Application Generator Core
+# SAP Cloud Application Generator
 
 [![NPM Version](https://img.shields.io/npm/v/@ragarwal06/sap-cloud-application-generator)](https://www.npmjs.com/package/@ragarwal06/sap-cloud-application-generator) [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
@@ -20,9 +20,9 @@ The core engine powering both the CLI and VS Code extension generators for SAP C
 ## 🎯 Installation
 
 ```bash
-npm install @ragarwal06/sap-cloud-application-generator-core
+npm install @ragarwal06/sap-cloud-application-generator
 # or
-yarn add @ragarwal06/sap-cloud-application-generator-core
+yarn add @ragarwal06/sap-cloud-application-generator
 ```
 
 ## 📄 License
