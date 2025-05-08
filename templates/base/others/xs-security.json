@@ -7,5 +7,10 @@
             "description": "uaa.user"
         }
     ],
-    "attributes": []
+    "attributes": [],
+    "oauth2-configuration": {
+        "redirect-uris": [
+            "https://*/**"
+        ]
+    }
 }

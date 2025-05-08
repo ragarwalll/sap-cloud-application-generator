@@ -1,0 +1,9 @@
+{
+    "destinations":[
+        {
+            "name": "reactjs",
+            "url": "http://localhost:5173",
+            "forwardAuthToken": true
+        }
+    ]
+}
