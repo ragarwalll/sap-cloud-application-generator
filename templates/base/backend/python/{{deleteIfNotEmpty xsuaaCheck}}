@@ -1,23 +1,34 @@
-from functools import wraps
+"""
+    This is the xsuaa entry point for the Flask application.
+"""
+
 from flask import make_response, request, jsonify
+
 # Cloud Foundry
 from cfenv import AppEnv
-env = AppEnv()
 
 # get the xsuaa service
 from sap import xssec
+
+env = AppEnv()
+
 UAA_SERVICE_LABEL = 'xsuaa'
 xsuaa_service = env.get_service(label=UAA_SERVICE_LABEL).credentials
 
 # Authentication decorator
 def auth(scopes):
+    """
+    Decorator to check if the user is authorized to access the endpoint
+    :param scopes: Comma separated list of scopes
+    :return: function
+    """
     def decorator(f):
         def wrapper(*args, **kwargs):
             access_token = None
             security_context = None
             scopes_list = scopes.split(',')
             is_authorized = False
-            
+
             # ensure the authorization header is passed with the headers
             if 'authorization' not in request.headers:
                 return make_response(jsonify({"message": "Authorization header is missing!"}), 401)

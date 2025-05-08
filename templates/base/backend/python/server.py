@@ -1,7 +1,9 @@
-# flask
+"""
+Main file to run the Flask server
+@author: ragarwalll
+"""
+import os
 from flask import Flask
-from flask import request
-from flask import abort
 {{#if xsuaa}}
 
 # load the environment variables from the .env file
@@ -13,8 +15,6 @@ from xsuaa_check import auth
 
 {{else}}
 {{/if}}
-# Others
-import os
 
 # initialize the flask app
 app = Flask(__name__)
@@ -25,13 +25,15 @@ port = int(os.environ.get('PORT', 3000))
 # home page
 @app.route('/')
 def hello():
+    """Home page"""
     return "Hello World"
 
 {{#if xsuaa}}
 @app.route('/home')
-@auth(scopes='import')
+@auth(scopes='')
 def home_protected(email):
-    return "Hello World"
+    """Protected home page"""
+    return "Hello " + email + "!"
 {{else}}
 {{/if}}
 
