@@ -10,7 +10,8 @@
     "attributes": [],
     "oauth2-configuration": {
         "redirect-uris": [
-            "https://*/**"
+            "https://*/**",
+            "http://localhost:8080/**"
         ]
     }
 }

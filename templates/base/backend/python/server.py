@@ -30,7 +30,7 @@ def hello():
 
 {{#if xsuaa}}
 @app.route('/home')
-@auth(scopes='')
+@auth(scopes='openid')
 def home_protected(email):
     """Protected home page"""
     return "Hello " + email + "!"

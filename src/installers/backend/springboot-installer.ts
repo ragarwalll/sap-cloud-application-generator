@@ -27,9 +27,10 @@ export class SpringBootPackage extends BasePackage {
         let metalsmithData = {
             projectName: this.name,
             projectNamespace: this.namespace,
-            projectResourceRoots: `${this.namespace.split('.').join('\\')}\\${
-                this.name
-            }`,
+            projectResourceRoots: path.join(
+                ...this.namespace.split('.'),
+                this.name,
+            ),
         };
 
         if (this.boilerplate.enableXSUAA)
