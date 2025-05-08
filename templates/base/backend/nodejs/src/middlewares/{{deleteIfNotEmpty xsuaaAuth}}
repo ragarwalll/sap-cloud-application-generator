@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
-import { UserProfile, SecurityContext } from '@sap/xssec';
+import { XsuaaSecurityContext } from '@sap/xssec';
 
-export const verifyCallback = (req: Request, resolve: any, reject: any, requiredRights: string[]) => async (err: Error, user: UserProfile, authInfo: SecurityContext) => {
+export const verifyCallback = (req: Request, resolve: any, reject: any, requiredRights: string[]) => async (err: Error, user: Express.User, authInfo: XsuaaSecurityContext) => {
     if (err || !authInfo || !user) {
         return reject(JSON.stringify({ code: 401, message: 'Unauthorized' }));
     }
@@ -19,7 +19,7 @@ export const verifyCallback = (req: Request, resolve: any, reject: any, required
         }
 
         if (!hasRequiredRights) return reject(JSON.stringify({ code: 403, message: 'Forbidden' }));
-    } else if (!authInfo.checkScope('uaa.user')) return reject(JSON.stringify({ code: 403, message: 'Forbidden' }));
+    } else if (!authInfo.checkScope('uaa.user') && !authInfo.checkScope('openid')) return reject(JSON.stringify({ code: 403, message: 'Forbidden' }));
 
     resolve();
 };

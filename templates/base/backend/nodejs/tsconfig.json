@@ -13,9 +13,6 @@
   "ts-node": {
     "files": true
   },
-  "files": [
-    "src/types/sap__xssec.d.ts",
-  ],
   {{else}}
   {{/if}}
   "include": ["**/*.ts", "**/*.tsx"],

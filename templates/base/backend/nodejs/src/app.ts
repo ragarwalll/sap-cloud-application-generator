@@ -5,8 +5,10 @@ import compression from 'compression';
 import routes from './routes';
 {{#if xsuaa}}
 import passport from 'passport';
-import { JWTStrategy } from '@sap/xssec';
+import { XssecPassportStrategy, XsuaaService, SECURITY_CONTEXT } from '@sap/xssec';
 import xsenv from '@sap/xsenv';
+import { XsuaaServiceCredentials } from '@sap/xssec/types/service/XsuaaService';
+import { ServiceCredentials } from '@sap/xssec/types/service/Service';
 {{else}}
 {{/if}}
 
@@ -27,7 +29,9 @@ app.options('*', cors());
 
 {{#if xsuaa}}
 // jwt authentication xsuaa
-passport.use(new JWTStrategy(xsenv.getServices({ uaa: { tag: 'xsuaa' } }).uaa));
+const credentials = xsenv.serviceCredentials({ tag: 'xsuaa' }) as XsuaaServiceCredentials & ServiceCredentials;
+const authService = new XsuaaService(credentials)
+passport.use(new XssecPassportStrategy(authService, SECURITY_CONTEXT));
 app.use(passport.initialize());
 {{else}}
 {{/if}}
