@@ -2,7 +2,7 @@
     "name": "{{projectName}}",
     "version": "{{projectVersion}}",
     "dependencies": {
-        "@sap/html5-app-deployer": "^5.0.0"
+        "@sap/html5-app-deployer": "^7.0.1"
     },
     "scripts": {
         "start": "node node_modules/@sap/html5-app-deployer/index.js"

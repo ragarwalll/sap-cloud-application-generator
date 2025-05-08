@@ -24,7 +24,7 @@ server:
 builder:
   customTasks:
     -  name: ui5-task-zipper
-       afterTask: uglify
+       afterTask: generateResourcesJson
        configuration:
          includeDependencies: false
          archiveName: uimodule
