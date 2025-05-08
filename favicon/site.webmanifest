@@ -1,0 +1,22 @@
+{
+  "name": "SAP CAG",
+  "short_name": "SAP CAG",
+  "description": "SAP Cloud Application Generator (SAP CAG) is available as both a CLI tool and a VS Code extension for quickly bootstrapping full-stack SAP BTP applications.",
+  "start_url": "/sap-cag",
+  "display": "standalone",
+  "background_color": "#101010",
+  "theme_color": "#b7ab98",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["boilerplate", "cli", "sap", "sap-btp", "sap-cloud-application-generator"]
+}
